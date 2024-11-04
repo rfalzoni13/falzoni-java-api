@@ -1,0 +1,33 @@
+#Application Configurations
+#server:
+  #port: 8081
+
+spring:
+  application:
+    name: falzoni-java-web
+  devtools:
+    livereload:
+      enabled: true
+#Security options
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost
+#Database Configurations
+  datasource:
+    url: jdbc:mysql://localhost/falzonijava
+    username: username
+    password: password
+    hikari:
+      auto-commit: true
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        #ddl-auto: update
+  jwt:
+    private:
+      key: classpath:app.key
+    public:
+      key: classpath:app.pub
