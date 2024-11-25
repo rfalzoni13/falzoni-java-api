@@ -1,9 +1,9 @@
 package br.com.falzoni.falzoni_java_api;
 
-import br.com.falzoni.falzoni_java_api.controllers.entries.CustomerController;
+import br.com.falzoni.falzoni_java_api.controllers.register.CustomerController;
 import br.com.falzoni.falzoni_java_api.controllers.security.AuthenticationController;
 import br.com.falzoni.falzoni_java_api.controllers.stock.ProductController;
-import br.com.falzoni.falzoni_java_api.services.entries.CustomerService;
+import br.com.falzoni.falzoni_java_api.services.register.CustomerService;
 import br.com.falzoni.falzoni_java_api.services.security.AuthenticationService;
 import br.com.falzoni.falzoni_java_api.services.stock.ProductService;
 import org.junit.jupiter.api.Test;

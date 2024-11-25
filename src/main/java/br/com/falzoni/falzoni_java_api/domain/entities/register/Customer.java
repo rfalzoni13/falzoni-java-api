@@ -1,4 +1,4 @@
-package br.com.falzoni.falzoni_java_api.domain.entities.entries;
+package br.com.falzoni.falzoni_java_api.domain.entities.register;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;

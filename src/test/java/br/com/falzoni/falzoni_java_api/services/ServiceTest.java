@@ -6,6 +6,8 @@ public interface ServiceTest {
     void update_test_success();
     void update_test_failure();
     void update_test_not_found();
+    void delete_test_success();
+    void delete_test_not_found();
     void find_test_data();
     void find_test_empty();
     void find_all_test_success();

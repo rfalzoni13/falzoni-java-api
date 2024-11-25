@@ -39,10 +39,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.GET, "/swagger-ui/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/v3/api-docs/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/authentication/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/authentication/register").permitAll()
+                        .requestMatchers(HttpMethod.GET,   "/swagger-ui**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "api/authentication/**").permitAll()
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
         return http.build();

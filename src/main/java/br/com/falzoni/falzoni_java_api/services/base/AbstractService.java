@@ -8,5 +8,5 @@ public abstract class AbstractService<T> {
     public abstract T findById(UUID id);
     public abstract void update(T obj);
     public abstract void insert(T obj);
-    public abstract void delete(T obj);
+    public abstract void delete(UUID id);
 }

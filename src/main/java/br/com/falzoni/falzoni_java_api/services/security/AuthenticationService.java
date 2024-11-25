@@ -1,7 +1,7 @@
 package br.com.falzoni.falzoni_java_api.services.security;
 
 import br.com.falzoni.falzoni_java_api.configuration.security.JwtConfig;
-import br.com.falzoni.falzoni_java_api.domain.dtos.classes.TokenResponseDTO;
+import br.com.falzoni.falzoni_java_api.domain.dtos.classes.security.TokenResponseDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.records.LoginDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.records.RegisterDTO;
 import br.com.falzoni.falzoni_java_api.domain.entities.security.User;

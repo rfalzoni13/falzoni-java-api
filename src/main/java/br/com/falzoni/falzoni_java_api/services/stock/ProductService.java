@@ -1,6 +1,7 @@
 package br.com.falzoni.falzoni_java_api.services.stock;
 
-import br.com.falzoni.falzoni_java_api.domain.entities.entries.Customer;
+import br.com.falzoni.falzoni_java_api.domain.dtos.classes.stock.ProductDTO;
+import br.com.falzoni.falzoni_java_api.domain.entities.register.Customer;
 import br.com.falzoni.falzoni_java_api.domain.entities.stock.Product;
 import br.com.falzoni.falzoni_java_api.repositories.stock.ProductRepository;
 import br.com.falzoni.falzoni_java_api.services.base.AbstractService;
@@ -13,33 +14,41 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class ProductService extends AbstractService<Product> {
+public class ProductService extends AbstractService<ProductDTO> {
     @Autowired
     private ProductRepository repository;
 
 
     @Override
-    public List<Product> findAll() {
-        return repository.findAll();
+    public List<ProductDTO> findAll() {
+        List<Product> list = repository.findAll();
+        return list.stream()
+                .map(p -> new ProductDTO(p.getId(), p.getName(), p.getPrice(), p.getDiscount()))
+                .toList();
     }
 
     @Override
-    public Product findById(UUID id) {
-        return repository.findById(id).orElse(null);
+    public ProductDTO findById(UUID id) {
+        Product obj = repository.findById(id).orElse(null);
+        if(obj != null) {
+            return new ProductDTO(obj.getId(), obj.getName(), obj.getPrice(), obj.getDiscount());
+        }
+        return null;
     }
 
     @Override
-    public void insert(Product obj) {
+    public void insert(ProductDTO obj) {
         try {
             Validate(obj);
-            repository.save(obj);
+            Product product = new Product(obj.getName(), obj.getPrice(), obj.getDiscount());
+            repository.save(product);
         } catch (Exception ex) {
             throw new RuntimeException(ex.getMessage());
         }
     }
 
     @Override
-    public void update(Product obj) {
+    public void update(ProductDTO obj) {
         try {
             Validate(obj);
             Optional<Product> hasProduct = repository.findById(obj.getId());
@@ -58,12 +67,20 @@ public class ProductService extends AbstractService<Product> {
     }
 
     @Override
-    public void delete(Product obj) {
-        repository.delete(obj);
+    public void delete(UUID id) {
+        try {
+            Optional<Product> optional = repository.findById(id);
+            if(optional.isEmpty()) throw new Exception("Registro não encontrado");
+
+            Product product = optional.get();
+            repository.delete(product);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
     }
 
     // private METHODS
-    private void Validate(Product obj) throws Exception {
+    private void Validate(ProductDTO obj) throws Exception {
         if (ValidationUtils.CheckNullValue(obj.getName()))
             throw new Exception("O nome do produto não foi preenchido corretamente");
 

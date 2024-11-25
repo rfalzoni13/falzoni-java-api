@@ -1,4 +1,4 @@
-package br.com.falzoni.falzoni_java_api.domain.dtos.classes;
+package br.com.falzoni.falzoni_java_api.domain.dtos.classes.security;
 
 public class ResponseDTO {
     private int statusCode;

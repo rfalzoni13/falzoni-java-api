@@ -1,9 +1,8 @@
-package br.com.falzoni.falzoni_java_api.controllers.stock;
+package br.com.falzoni.falzoni_java_api.controllers.register;
 
 import br.com.falzoni.falzoni_java_api.domain.dtos.classes.register.CustomerDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.classes.security.ResponseDTO;
-import br.com.falzoni.falzoni_java_api.domain.dtos.classes.stock.ProductDTO;
-import br.com.falzoni.falzoni_java_api.services.stock.ProductService;
+import br.com.falzoni.falzoni_java_api.services.register.CustomerService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,16 +14,16 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("aoi/product")
-@Tag(name = "Product")
-public class ProductController {
+@RequestMapping("api/customer")
+@Tag(name = "Customer")
+public class CustomerController {
     @Autowired
-    private ProductService service;
+    private CustomerService service;
 
     @GetMapping("/findAll")
     public ResponseEntity<Object> findAll() {
         try {
-            List<ProductDTO> list = service.findAll();
+            List<CustomerDTO> list = service.findAll();
             return ResponseEntity.ok(list);
         } catch (AuthenticationException ex) {
             return ResponseEntity.badRequest().body(new ResponseDTO(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));
@@ -34,7 +33,7 @@ public class ProductController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<Object> findById(@PathVariable(name = "id") UUID id) {
         try {
-            ProductDTO obj = service.findById(id);
+            CustomerDTO obj = service.findById(id);
             return ResponseEntity.ok(obj);
         } catch (AuthenticationException ex) {
             return ResponseEntity.badRequest().body(new ResponseDTO(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));
@@ -42,7 +41,7 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Object> create(@RequestBody ProductDTO dto) {
+    public ResponseEntity<Object> create(@RequestBody CustomerDTO dto) {
         try {
             service.insert(dto);
             return ResponseEntity.ok("Registro incluído com sucesso!");
@@ -52,9 +51,9 @@ public class ProductController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Object> update(@RequestBody ProductDTO dto) {
+    public ResponseEntity<Object> update(@RequestBody CustomerDTO dto) {
         try {
-            service.insert(dto);
+            service.update(dto);
             return ResponseEntity.ok("Registro incluído com sucesso!");
         } catch (AuthenticationException ex) {
             return ResponseEntity.badRequest().body(new ResponseDTO(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));

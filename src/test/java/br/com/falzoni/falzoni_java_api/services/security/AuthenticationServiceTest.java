@@ -1,6 +1,6 @@
 package br.com.falzoni.falzoni_java_api.services.security;
 
-import br.com.falzoni.falzoni_java_api.domain.dtos.classes.TokenResponseDTO;
+import br.com.falzoni.falzoni_java_api.domain.dtos.classes.security.TokenResponseDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.records.LoginDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.records.RegisterDTO;
 import br.com.falzoni.falzoni_java_api.domain.enums.UserRole;
@@ -12,11 +12,12 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ActiveProfiles("test")
 @SpringBootTest
-public class AuthenticationServiceImplTest {
+public class AuthenticationServiceTest {
     @Autowired
     private AuthenticationService service;
 
@@ -43,8 +44,7 @@ public class AuthenticationServiceImplTest {
     @DisplayName("Test for register service operation success")
     public void register_return_success() throws Exception {
         RegisterDTO dto = new RegisterDTO("Chun Li", "chun_li", "654321", "chunli.streetfighter@hotmail.com", "(11) 2222-2222", UserRole.USER);
-        service.register(dto);
-        assertThat(dto).isNotNull();
+        assertDoesNotThrow(() -> service.register(dto));
     }
 
     @Test

@@ -1,6 +1,6 @@
 package br.com.falzoni.falzoni_java_api.configuration.security;
 
-import br.com.falzoni.falzoni_java_api.domain.dtos.classes.TokenResponseDTO;
+import br.com.falzoni.falzoni_java_api.domain.dtos.classes.security.TokenResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
