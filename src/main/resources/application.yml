@@ -17,8 +17,8 @@ spring:
 #Database Configurations
   datasource:
     url: jdbc:mysql://localhost/falzonijava
-    username: username
-    password: password
+    username: Renato
+    password: SaintSeiya013
     hikari:
       auto-commit: true
   jpa:

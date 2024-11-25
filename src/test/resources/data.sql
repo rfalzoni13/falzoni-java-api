@@ -9,6 +9,6 @@ INSERT INTO customer(id, name, document) VALUES('a8b7b18e-5e78-4fa6-970a-2c4ebfb
 INSERT INTO customer(id, name, document) VALUES('6837626f-ce24-4311-98d7-c7495e093158', 'Light Yagami', '402.321.898-18');
 
 -- Product Table
-INSERT INTO product(id, name, price, discount) VALUES('84804497-6f87-46ec-8b97-c9ddaae5f4fd', 'Notebook Gamer', 4999.99, 0);
+INSERT INTO product(id, name, price, discount) VALUES('84804497-6f87-46ec-8b97-c9ddaae5f4fd', 'Notebook Gamer', 4999.99, 0.00);
 INSERT INTO product(id, name, price, discount) VALUES('6e5fa41e-5e6a-44d1-b9a4-ee42e389d40f', 'Vídeo Game PolyStation', 399.99, 5.00);
-INSERT INTO product(id, name, price, discount) VALUES('0bad80f4-ba82-42bb-bd9c-6f5230f9e835', 'Mochila Saint Seiya', 29.99, 0);
+INSERT INTO product(id, name, price, discount) VALUES('0bad80f4-ba82-42bb-bd9c-6f5230f9e835', 'Mochila Saint Seiya', 29.99, 0.00);

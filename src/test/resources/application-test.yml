@@ -13,6 +13,7 @@ spring:
         auto_quote_keyword: true
         dialect: org.hibernate.dialect.H2Dialect
         format_sql: true
+        show_sql: true
     hibernate:
       ddl-auto: create-drop
 #    database-platform: org.hibernate.dialect.H2Dialect
