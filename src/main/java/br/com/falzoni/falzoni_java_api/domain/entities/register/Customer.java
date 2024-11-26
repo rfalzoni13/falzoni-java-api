@@ -14,10 +14,10 @@ public class Customer {
     @Column(nullable = false, length = 64)
     private UUID id;
 
-    @Column(length = 128)
+    @Column(length = 128, nullable = false)
     private String name;
 
-    @Column(length = 20)
+    @Column(length = 20, nullable = false)
     private String document;
 
     public Customer() {

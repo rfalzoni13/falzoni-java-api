@@ -27,9 +27,10 @@ public class User {
     @Column(length = 256, nullable = false)
     private String email;
 
-    @Column(length = 128)
+    @Column(length = 128, nullable = false)
     private String phoneNumber;
 
+    @Column(length = 20)
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
