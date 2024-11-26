@@ -2,7 +2,7 @@ package br.com.falzoni.falzoni_java_api.controllers.register;
 
 import br.com.falzoni.falzoni_java_api.domain.dtos.classes.register.CustomerDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.classes.security.ResponseDTO;
-import br.com.falzoni.falzoni_java_api.services.register.CustomerService;
+import br.com.falzoni.falzoni_java_api.services.interfaces.register.CustomerService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

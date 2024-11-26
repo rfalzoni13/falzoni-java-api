@@ -4,6 +4,8 @@ import br.com.falzoni.falzoni_java_api.domain.dtos.classes.stock.ProductDTO;
 import br.com.falzoni.falzoni_java_api.domain.entities.stock.Product;
 import br.com.falzoni.falzoni_java_api.repositories.stock.ProductRepository;
 import br.com.falzoni.falzoni_java_api.services.ServiceTest;
+import br.com.falzoni.falzoni_java_api.services.classes.stock.ProductServiceImpl;
+import br.com.falzoni.falzoni_java_api.services.interfaces.stock.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,7 +34,7 @@ public class ProductServiceTest implements ServiceTest {
 
     @Autowired
     @InjectMocks
-    private ProductService service;
+    private ProductService service = new ProductServiceImpl();
 
     @BeforeEach
     void setup() {

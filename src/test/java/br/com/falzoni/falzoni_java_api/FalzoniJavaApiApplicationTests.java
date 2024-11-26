@@ -3,9 +3,9 @@ package br.com.falzoni.falzoni_java_api;
 import br.com.falzoni.falzoni_java_api.controllers.register.CustomerController;
 import br.com.falzoni.falzoni_java_api.controllers.security.AuthenticationController;
 import br.com.falzoni.falzoni_java_api.controllers.stock.ProductController;
-import br.com.falzoni.falzoni_java_api.services.register.CustomerService;
-import br.com.falzoni.falzoni_java_api.services.security.AuthenticationService;
-import br.com.falzoni.falzoni_java_api.services.stock.ProductService;
+import br.com.falzoni.falzoni_java_api.services.classes.security.AuthenticationService;
+import br.com.falzoni.falzoni_java_api.services.interfaces.register.CustomerService;
+import br.com.falzoni.falzoni_java_api.services.interfaces.stock.ProductService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,13 +40,13 @@ class FalzoniJavaApiApplicationTests {
 
 	@Test
 	void contextLoads() throws Exception {
-		assertThat(authenticationController).isNotNull();
-		assertThat(customerController).isNotNull();
-		assertThat(productController).isNotNull();
+		assertThat(this.authenticationController).isNotNull();
+		assertThat(this.customerController).isNotNull();
+		assertThat(this.productController).isNotNull();
 
-		assertThat(authenticationService).isNotNull();
-		assertThat(customerService).isNotNull();
-		assertThat(productService).isNotNull();
+		assertThat(this.authenticationService).isNotNull();
+		assertThat(this.customerService).isNotNull();
+		assertThat(this.productService).isNotNull();
 	}
 
 }

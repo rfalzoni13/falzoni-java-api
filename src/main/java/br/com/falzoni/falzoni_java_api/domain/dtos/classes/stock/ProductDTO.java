@@ -1,16 +1,10 @@
 package br.com.falzoni.falzoni_java_api.domain.dtos.classes.stock;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
+import br.com.falzoni.falzoni_java_api.domain.dtos.base.BaseDTO;
 
 import java.util.UUID;
 
-public class ProductDTO {
-    private UUID id;
+public class ProductDTO extends BaseDTO {
     private String name;
     private double price;
     private double discount;

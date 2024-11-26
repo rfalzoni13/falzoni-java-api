@@ -4,7 +4,7 @@ import br.com.falzoni.falzoni_java_api.domain.dtos.classes.security.ResponseDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.classes.security.TokenResponseDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.records.LoginDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.records.RegisterDTO;
-import br.com.falzoni.falzoni_java_api.services.security.AuthenticationService;
+import br.com.falzoni.falzoni_java_api.services.classes.security.AuthenticationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

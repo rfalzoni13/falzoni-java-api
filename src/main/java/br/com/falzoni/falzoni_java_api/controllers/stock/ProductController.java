@@ -1,9 +1,8 @@
 package br.com.falzoni.falzoni_java_api.controllers.stock;
 
-import br.com.falzoni.falzoni_java_api.domain.dtos.classes.register.CustomerDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.classes.security.ResponseDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.classes.stock.ProductDTO;
-import br.com.falzoni.falzoni_java_api.services.stock.ProductService;
+import br.com.falzoni.falzoni_java_api.services.interfaces.stock.ProductService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

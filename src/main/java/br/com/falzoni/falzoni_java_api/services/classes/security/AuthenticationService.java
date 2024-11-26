@@ -1,4 +1,4 @@
-package br.com.falzoni.falzoni_java_api.services.security;
+package br.com.falzoni.falzoni_java_api.services.classes.security;
 
 import br.com.falzoni.falzoni_java_api.configuration.security.JwtConfig;
 import br.com.falzoni.falzoni_java_api.domain.dtos.classes.security.TokenResponseDTO;

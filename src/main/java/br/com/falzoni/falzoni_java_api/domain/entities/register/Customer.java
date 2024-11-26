@@ -1,19 +1,12 @@
 package br.com.falzoni.falzoni_java_api.domain.entities.register;
 
+import br.com.falzoni.falzoni_java_api.domain.entities.base.BaseEntity;
 import jakarta.persistence.*;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
 import java.util.UUID;
 
 @Entity
-public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @JdbcTypeCode(SqlTypes.VARCHAR)
-    @Column(nullable = false, length = 64)
-    private UUID id;
-
+public class Customer extends BaseEntity {
     @Column(length = 128, nullable = false)
     private String name;
 

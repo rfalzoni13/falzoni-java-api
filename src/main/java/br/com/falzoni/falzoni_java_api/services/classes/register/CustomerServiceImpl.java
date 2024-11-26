@@ -1,9 +1,9 @@
-package br.com.falzoni.falzoni_java_api.services.register;
+package br.com.falzoni.falzoni_java_api.services.classes.register;
 
 import br.com.falzoni.falzoni_java_api.domain.dtos.classes.register.CustomerDTO;
 import br.com.falzoni.falzoni_java_api.domain.entities.register.Customer;
 import br.com.falzoni.falzoni_java_api.repositories.register.CustomerRepository;
-import br.com.falzoni.falzoni_java_api.services.base.AbstractService;
+import br.com.falzoni.falzoni_java_api.services.interfaces.register.CustomerService;
 import br.com.falzoni.falzoni_java_api.utils.ValidationUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class CustomerService extends AbstractService<CustomerDTO> {
+public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerRepository repository;
 

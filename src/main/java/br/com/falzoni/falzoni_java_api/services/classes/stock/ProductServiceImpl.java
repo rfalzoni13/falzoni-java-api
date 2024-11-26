@@ -1,9 +1,9 @@
-package br.com.falzoni.falzoni_java_api.services.stock;
+package br.com.falzoni.falzoni_java_api.services.classes.stock;
 
 import br.com.falzoni.falzoni_java_api.domain.dtos.classes.stock.ProductDTO;
 import br.com.falzoni.falzoni_java_api.domain.entities.stock.Product;
 import br.com.falzoni.falzoni_java_api.repositories.stock.ProductRepository;
-import br.com.falzoni.falzoni_java_api.services.base.AbstractService;
+import br.com.falzoni.falzoni_java_api.services.interfaces.stock.ProductService;
 import br.com.falzoni.falzoni_java_api.utils.ValidationUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,12 +13,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class ProductService extends AbstractService<ProductDTO> {
+public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository repository;
 
-
-    @Override
     public List<ProductDTO> findAll() {
         List<Product> list = this.repository.findAll();
         return list.stream()

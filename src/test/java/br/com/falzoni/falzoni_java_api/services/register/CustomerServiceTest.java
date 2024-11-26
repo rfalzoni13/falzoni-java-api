@@ -4,6 +4,8 @@ import br.com.falzoni.falzoni_java_api.domain.dtos.classes.register.CustomerDTO;
 import br.com.falzoni.falzoni_java_api.domain.entities.register.Customer;
 import br.com.falzoni.falzoni_java_api.repositories.register.CustomerRepository;
 import br.com.falzoni.falzoni_java_api.services.ServiceTest;
+import br.com.falzoni.falzoni_java_api.services.classes.register.CustomerServiceImpl;
+import br.com.falzoni.falzoni_java_api.services.interfaces.register.CustomerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,7 +33,7 @@ public class CustomerServiceTest implements ServiceTest {
 
     @Autowired
     @InjectMocks
-    private CustomerService service;
+    private CustomerService service = new CustomerServiceImpl();
 
     @BeforeEach
     void setup() {

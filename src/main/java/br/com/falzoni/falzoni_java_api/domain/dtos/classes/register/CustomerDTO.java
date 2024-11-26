@@ -1,9 +1,10 @@
 package br.com.falzoni.falzoni_java_api.domain.dtos.classes.register;
 
+import br.com.falzoni.falzoni_java_api.domain.dtos.base.BaseDTO;
+
 import java.util.UUID;
 
-public class CustomerDTO {
-    private UUID id;
+public class CustomerDTO extends BaseDTO {
     private String name;
     private String document;
 
