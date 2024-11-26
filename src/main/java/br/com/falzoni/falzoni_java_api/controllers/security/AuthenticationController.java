@@ -26,7 +26,7 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody @Valid LoginDTO loginDTO) {
         try {
-            TokenResponseDTO token = authenticationService.authenticate(loginDTO);
+            TokenResponseDTO token = this.authenticationService.authenticate(loginDTO);
             return ResponseEntity.ok().body(token);
         } catch (AuthenticationException ex) {
             return ResponseEntity.badRequest().body(new ResponseDTO(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));
@@ -36,7 +36,7 @@ public class AuthenticationController {
     @PostMapping("/register")
     public ResponseEntity<Object> register(@RequestBody @Valid RegisterDTO registerDTO) {
         try {
-            authenticationService.register(registerDTO);
+            this.authenticationService.register(registerDTO);
             return ResponseEntity.ok(new ResponseDTO(HttpStatus.OK.value(), "Usuário incluído com sucesso!"));
         } catch (Exception ex) {
             return ResponseEntity.badRequest().body(new ResponseDTO(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));

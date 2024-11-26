@@ -1,6 +1,7 @@
 package br.com.falzoni.falzoni_java_api.repositories.security;
 
 import br.com.falzoni.falzoni_java_api.domain.entities.security.User;
+import br.com.falzoni.falzoni_java_api.domain.entities.stock.Product;
 import br.com.falzoni.falzoni_java_api.domain.enums.UserRole;
 import br.com.falzoni.falzoni_java_api.repositories.RepositoryTest;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ActiveProfiles("test")
 @DataJpaTest
-public class UserRepositoryImplTest implements RepositoryTest {
+public class UserRepositoryTest implements RepositoryTest {
     @Autowired
     private UserRepository repository;
 
@@ -26,7 +27,7 @@ public class UserRepositoryImplTest implements RepositoryTest {
     @Test
     @DisplayName("Test for create user operation")
     public void create_test() {
-        User user = repository.save(
+        User user = this.repository.save(
                 new User(
                         "Maria do Bairro",
                         "mariadb",
@@ -45,7 +46,7 @@ public class UserRepositoryImplTest implements RepositoryTest {
         try {
             User user = setDataToUserUpdate(UUID.fromString("55d18bd8-05f2-4410-8c63-14ab6b7ac06e"));
 
-            user = repository.save(user);
+            user = this.repository.save(user);
 
             assertThat(user).isNotNull();
             assertThat(user.getId()).isNotNull();
@@ -60,9 +61,21 @@ public class UserRepositoryImplTest implements RepositoryTest {
 
     @Override
     @Test
+    @DisplayName("Test for delete user operation")
+    public void delete_test() {
+        User user = new User("Hyoga de Cisne", "hcisne", "hyogadecisne.bronze@gmail.com", "654321", "11976462168", UserRole.USER);
+        user.setId(UUID.fromString("55d18bd8-05f2-4410-8c63-14ab6b7ac06e"));
+
+        this.repository.delete(user);
+
+        assertThat(user).isNotNull();
+    }
+
+    @Override
+    @Test
     @DisplayName("Test for find user operation")
     public void find_test() {
-        Optional<User> user = repository.findById(UUID.fromString("436f13b6-bf4f-45f7-8bb8-4c904fecd799"));
+        Optional<User> user = this.repository.findById(UUID.fromString("436f13b6-bf4f-45f7-8bb8-4c904fecd799"));
 
         assertThat(user.isPresent()).isTrue();
         assertThat(user.get()).isNotNull();
@@ -72,7 +85,7 @@ public class UserRepositoryImplTest implements RepositoryTest {
     @Test
     @DisplayName("Test for find all users operation")
     public void find_all_test() {
-        List<User> list = repository.findAll();
+        List<User> list = this.repository.findAll();
 
         assertThat(list).isNotEmpty();
         assertThat(list).isNotNull();
@@ -81,7 +94,7 @@ public class UserRepositoryImplTest implements RepositoryTest {
 
     // private METHODS
     private User setDataToUserUpdate(UUID uuid) throws Exception {
-        Optional<User> optional = repository.findById(uuid);
+        Optional<User> optional = this.repository.findById(uuid);
 
         if (optional.isEmpty()) throw new Exception("Nenhum registro encontrado");
 

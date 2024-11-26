@@ -19,7 +19,7 @@ public class CustomerService extends AbstractService<CustomerDTO> {
 
     @Override
     public List<CustomerDTO> findAll() {
-        List<Customer> list = repository.findAll();
+        List<Customer> list = this.repository.findAll();
         return list.stream()
                 .map(c -> new CustomerDTO(c.getId(), c.getName(), c.getDocument()))
                 .toList();
@@ -27,7 +27,7 @@ public class CustomerService extends AbstractService<CustomerDTO> {
 
     @Override
     public CustomerDTO findById(UUID id) {
-        Customer obj = repository.findById(id).orElse(null);
+        Customer obj = this.repository.findById(id).orElse(null);
         if(obj != null) {
             return new CustomerDTO(obj.getId(), obj.getName(), obj.getDocument());
         }
@@ -39,7 +39,7 @@ public class CustomerService extends AbstractService<CustomerDTO> {
         try {
             Validate(obj);
             Customer customer = new Customer(obj.getName(), obj.getDocument());
-            repository.save(customer);
+            this.repository.save(customer);
         } catch (Exception ex) {
             throw new RuntimeException(ex.getMessage());
         }
@@ -49,12 +49,12 @@ public class CustomerService extends AbstractService<CustomerDTO> {
     public void update(CustomerDTO obj) {
         try {
             Validate(obj);
-            Optional<Customer> hasCustomer = repository.findById(obj.getId());
+            Optional<Customer> hasCustomer = this.repository.findById(obj.getId());
             if (hasCustomer.isPresent()) {
                 Customer customer = hasCustomer.get();
                 customer.setName(obj.getName());
                 customer.setDocument(obj.getDocument());
-                repository.save(customer);
+                this.repository.save(customer);
             } else {
                 throw new Exception("Registro não encontrado");
             }
@@ -66,11 +66,11 @@ public class CustomerService extends AbstractService<CustomerDTO> {
     @Override
     public void delete(UUID id) {
         try {
-            Optional<Customer> optional = repository.findById(id);
+            Optional<Customer> optional = this.repository.findById(id);
             if(optional.isEmpty()) throw new Exception("Registro não encontrado");
 
             Customer customer = optional.get();
-            repository.delete(customer);
+            this.repository.delete(customer);
         } catch (Exception ex) {
             throw new RuntimeException(ex.getMessage());
         }

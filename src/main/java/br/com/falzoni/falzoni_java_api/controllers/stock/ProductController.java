@@ -24,7 +24,7 @@ public class ProductController {
     @GetMapping("/findAll")
     public ResponseEntity<Object> findAll() {
         try {
-            List<ProductDTO> list = service.findAll();
+            List<ProductDTO> list = this.service.findAll();
             return ResponseEntity.ok(list);
         } catch (AuthenticationException ex) {
             return ResponseEntity.badRequest().body(new ResponseDTO(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));
@@ -34,7 +34,7 @@ public class ProductController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<Object> findById(@PathVariable(name = "id") UUID id) {
         try {
-            ProductDTO obj = service.findById(id);
+            ProductDTO obj = this.service.findById(id);
             return ResponseEntity.ok(obj);
         } catch (AuthenticationException ex) {
             return ResponseEntity.badRequest().body(new ResponseDTO(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));
@@ -44,7 +44,7 @@ public class ProductController {
     @PostMapping("/create")
     public ResponseEntity<Object> create(@RequestBody ProductDTO dto) {
         try {
-            service.insert(dto);
+            this.service.insert(dto);
             return ResponseEntity.ok("Registro incluído com sucesso!");
         } catch (AuthenticationException ex) {
             return ResponseEntity.badRequest().body(new ResponseDTO(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));
@@ -54,7 +54,7 @@ public class ProductController {
     @PutMapping("/update")
     public ResponseEntity<Object> update(@RequestBody ProductDTO dto) {
         try {
-            service.insert(dto);
+            this.service.insert(dto);
             return ResponseEntity.ok("Registro incluído com sucesso!");
         } catch (AuthenticationException ex) {
             return ResponseEntity.badRequest().body(new ResponseDTO(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));

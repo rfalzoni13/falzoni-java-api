@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ActiveProfiles("test")
 @DataJpaTest
-public class CustomerRepositoryImplTest implements RepositoryTest {
+public class CustomerRepositoryTest implements RepositoryTest {
     @Autowired
     private CustomerRepository repository;
 
@@ -24,7 +24,7 @@ public class CustomerRepositoryImplTest implements RepositoryTest {
     @Test
     @DisplayName("Test for create customer operation")
     public void create_test() {
-        Customer customer = repository.save(new Customer("Seiya de Pégaso", "123.456.789-00"));
+        Customer customer = this.repository.save(new Customer("Seiya de Pégaso", "123.456.789-00"));
 
         assertThat(customer).isNotNull();
         assertThat(customer.getId()).isNotNull();
@@ -37,7 +37,7 @@ public class CustomerRepositoryImplTest implements RepositoryTest {
         try {
             Customer customer = setDataToCustomerUpdate(UUID.fromString("6837626f-ce24-4311-98d7-c7495e093158"));
 
-            customer = repository.save(customer);
+            customer = this.repository.save(customer);
 
             assertThat(customer).isNotNull();
             assertThat(customer.getId()).isNotNull();
@@ -46,6 +46,18 @@ public class CustomerRepositoryImplTest implements RepositoryTest {
         } catch (Exception ex) {
             throw new RuntimeException(ex.getMessage());
         }
+    }
+
+    @Override
+    @Test
+    @DisplayName("Test for delete customer operation")
+    public void delete_test() {
+        Customer customer = new Customer("Shiryu de Dragão", "36.698.312-00");
+        customer.setId(UUID.fromString("6837626f-ce24-4311-98d7-c7495e093158"));
+
+        this.repository.delete(customer);
+
+        assertThat(customer).isNotNull();
     }
 
     @Override

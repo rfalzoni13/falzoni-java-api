@@ -28,11 +28,11 @@ public class AuthenticationService {
         UsernamePasswordAuthenticationToken userNamePassword
                 = new UsernamePasswordAuthenticationToken(loginDTO.userName(), loginDTO.password());
         Authentication authentication = this.authenticationManager.authenticate(userNamePassword);
-        return jtwConfig.generateToken(authentication);
+        return this.jtwConfig.generateToken(authentication);
     }
 
     public void register(RegisterDTO dto) throws Exception {
-        if (repository.findByUserName(dto.userName()).isPresent()) throw new Exception("Usuário já existe!");
+        if (this.repository.findByUserName(dto.userName()).isPresent()) throw new Exception("Usuário já existe!");
 
         String encryptPassword = new BCryptPasswordEncoder().encode(dto.password());
         User user = new User(
@@ -44,6 +44,6 @@ public class AuthenticationService {
                 dto.role()
         );
 
-        repository.save(user);
+        this.repository.save(user);
     }
 }

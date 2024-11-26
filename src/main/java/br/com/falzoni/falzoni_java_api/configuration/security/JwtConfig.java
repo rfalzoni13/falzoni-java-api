@@ -34,7 +34,7 @@ public class JwtConfig {
                 .claim("scope", scopes)
                 .build();
 
-        Jwt jwt =  encoder.encode(JwtEncoderParameters.from(claims));
+        Jwt jwt =  this.encoder.encode(JwtEncoderParameters.from(claims));
         return new TokenResponseDTO(
                 jwt.getTokenValue(),
                 jwt.getExpiresAt(),
