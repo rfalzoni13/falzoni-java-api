@@ -31,3 +31,8 @@ spring:
       key: classpath:app.key
     public:
       key: classpath:app.pub
+springdoc:
+  swagger-ui:
+    path: /swagger
+  api-docs:
+    path: /v3/swagger
