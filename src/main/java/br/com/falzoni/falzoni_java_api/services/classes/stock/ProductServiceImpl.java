@@ -66,11 +66,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void delete(UUID id) {
         try {
-            Optional<Product> optional = this.repository.findById(id);
-            if(optional.isEmpty()) throw new Exception("Registro não encontrado");
-
-            Product product = optional.get();
-            this.repository.delete(product);
+            this.repository.deleteById(id);
         } catch (Exception ex) {
             throw new RuntimeException(ex.getMessage());
         }

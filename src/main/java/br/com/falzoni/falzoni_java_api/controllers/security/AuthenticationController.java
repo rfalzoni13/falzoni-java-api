@@ -1,10 +1,16 @@
 package br.com.falzoni.falzoni_java_api.controllers.security;
 
+import br.com.falzoni.falzoni_java_api.domain.dtos.classes.register.CustomerDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.classes.security.ResponseDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.classes.security.TokenResponseDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.records.LoginDTO;
 import br.com.falzoni.falzoni_java_api.domain.dtos.records.RegisterDTO;
 import br.com.falzoni.falzoni_java_api.services.classes.security.AuthenticationService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +29,11 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationService authenticationService;
 
+    @Operation(summary = "Login de usuário", description = "Obtém o token do usuário através de login e senha")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TokenResponseDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content)
+    })
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody @Valid LoginDTO loginDTO) {
         try {
@@ -33,6 +44,12 @@ public class AuthenticationController {
         }
     }
 
+    @Operation(summary = "Registrar usuárop", description = "Cria um novo registro de usuário")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Success", content = @Content),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content),
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
+    })
     @PostMapping("/register")
     public ResponseEntity<Object> register(@RequestBody @Valid RegisterDTO registerDTO) {
         try {

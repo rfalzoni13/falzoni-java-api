@@ -66,11 +66,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void delete(UUID id) {
         try {
-            Optional<Customer> optional = this.repository.findById(id);
-            if(optional.isEmpty()) throw new Exception("Registro não encontrado");
-
-            Customer customer = optional.get();
-            this.repository.delete(customer);
+            this.repository.deleteById(id);
         } catch (Exception ex) {
             throw new RuntimeException(ex.getMessage());
         }
